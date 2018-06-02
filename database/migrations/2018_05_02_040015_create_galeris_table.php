@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMobilsTable extends Migration
+class CreateGalerisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,10 @@ class CreateMobilsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mobils', function (Blueprint $table) {
+        Schema::create('galeris', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
-            $table->string('plat_no');
-            $table->string('kapasitas');
-            $table->integer('harga');
-            $table->string('jenis');
-            $table->string('warna');
-            $table->integer('tahun');
-            $table->string('type');
+            $table->string('foto'); 
             $table->timestamps();
         });
     }
@@ -34,6 +28,6 @@ class CreateMobilsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mobils');
+        Schema::dropIfExists('galeris');
     }
 }
