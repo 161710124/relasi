@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class boking extends Model
 {
-	protected $table='boking';
+	protected $table='bokings';
     protected $fillable=array('tanggal_boking','id_customer','id_mobil');
 
     public function customer(){

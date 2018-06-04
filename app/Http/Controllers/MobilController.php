@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\mobil;
+use App\galeri;
+use Session;
 
 class MobilController extends Controller
 {
@@ -14,8 +16,8 @@ class MobilController extends Controller
      */
     public function index()
     {
-        $mobil = mobil::all();
-        return view('mobil.index',compact('mobil'));
+        $mobil = mobil::with('galeri')->get();
+        return view('mbl.index',compact('mobil'));
     }
 
     /**
@@ -25,7 +27,9 @@ class MobilController extends Controller
      */
     public function create()
     {
-        return View('mbl.create');
+        $mobil = mobil::all();
+        $gl = galeri::all();
+        return view('mbl.create',compact('mobil','gl'));
     }
 
     /**
@@ -43,9 +47,9 @@ class MobilController extends Controller
         'harga' => 'required',
         'jenis' => 'required',
         'warna' => 'required',
-        'tahun' => 'required'
-        'type' => 'required'
-        
+        'tahun' => 'required',
+        'type' => 'required',
+        'id_galeri' => 'required'
         ]);
         $mobil = new mobil;
         $mobil->nama = $request->nama;
@@ -56,6 +60,7 @@ class MobilController extends Controller
         $mobil->warna = $request->warna;
         $mobil->tahun = $request->tahun;
         $mobil->type = $request->type;
+        $mobil->id_galeri = $request->id_galeri;
         $mobil->save();
         session::flash("flash_notification",[
             "level"=>"success",
@@ -84,7 +89,9 @@ class MobilController extends Controller
     public function edit($id)
     {
         $mobil = mobil::findOrFail($id);
-        return view('mbl.edit',compact('mobil'));
+        $gl = galeri::all();
+        $selectedGaleri = mobil::findOrFail($id)->id_galeri;
+        return view('mbl.edit',compact('mobil','gl','selectedGaleri'));
     }
 
     /**
@@ -104,7 +111,8 @@ class MobilController extends Controller
             'jenis' => 'required',
             'warna' => 'required',
             'tahun' => 'required',
-            'type' => 'required'
+            'type' => 'required',
+            'id_galeri' => 'required'
         ]);
         
         $mobil = mobil::findOrFail($id);
@@ -116,6 +124,7 @@ class MobilController extends Controller
         $mobil->warna = $request->warna;
         $mobil->tahun = $request->tahun;
         $mobil->type = $request->type;
+        $mobil->id_galeri = $request->id_galeri;
         $mobil->save();
         return redirect()->route('bil.index');
     }
