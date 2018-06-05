@@ -40,10 +40,16 @@ class GaleriController extends Controller
             'nama' => 'required',
             'foto' => 'required'
         ]);
-        $gl = new galeri;
-        $gl->nama = $request->nama;
-        $gl->foto= $request->foto;
+        $gl = galeri::create($request->except('foto'));
+        if ($request->hasFile('foto')) {
+        $uploaded_logo = $request->file('foto');
+        $extension = $uploaded_logo->getClientOriginalExtension();
+        $filename = md5(time()) . '.' . $extension;
+        $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
+        $uploaded_logo->move($destinationPath, $filename);
+        $gl->foto = $filename;
         $gl->save();
+    }
         return redirect()->route('glr.index');
     }
 
@@ -85,10 +91,23 @@ class GaleriController extends Controller
             'foto' => 'required'
         ]);
         
-        $gl = galeri::findOrFail($id);
-        $gl->nama = $request->nama;
-        $gl->foto= $request->foto;
+        $gl = galeri::find($id);
+        $gl -> update($request->all());
+        // isi field gambar jika ada gambar yang diupload
+        if ($request->hasFile('foto')) {
+        // Mengambil file yang diupload
+        $uploaded_logo = $request->file('foto');
+        // mengambil extension file
+        $extension = $uploaded_logo->getClientOriginalExtension();
+        // membuat nama file random berikut extension
+        $filename = md5(time()) . '.' . $extension;
+        // menyimpan gambar ke folder public/img
+        $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
+        $uploaded_logo->move($destinationPath, $filename);
+        // mengisi field gambar di Galeri dengan filename yang baru dibuat
+        $gl->foto = $filename;
         $gl->save();
+    }
         return redirect()->route('glr.index');
     }
 

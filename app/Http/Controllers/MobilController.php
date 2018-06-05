@@ -16,7 +16,7 @@ class MobilController extends Controller
      */
     public function index()
     {
-        $mobil = mobil::with('galeri')->get();
+        $mobil = mobil::all();
         return view('mbl.index',compact('mobil'));
     }
 
@@ -51,20 +51,7 @@ class MobilController extends Controller
         'type' => 'required',
         'id_galeri' => 'required'
         ]);
-        $mobil = new mobil;
-        $mobil->nama = $request->nama;
-        $mobil->plat_no= $request->plat_no;
-        $mobil->kapasitas = $request->kapasitas;
-        $mobil->harga = $request->harga;
-        $mobil->jenis = $request->jenis;
-        $mobil->warna = $request->warna;
-        $mobil->tahun = $request->tahun;
-        $mobil->type = $request->type;
-        $mobil->id_galeri = $request->id_galeri;
-        $mobil->save();
-        session::flash("flash_notification",[
-            "level"=>"success",
-            "message"=>"succes <b>$mobil->nama</b>"]);
+        $mobil = mobil::create($request->all());
         return redirect()->route('bil.index');
     }
 
@@ -115,17 +102,8 @@ class MobilController extends Controller
             'id_galeri' => 'required'
         ]);
         
-        $mobil = mobil::findOrFail($id);
-        $mobil->nama = $request->nama;
-        $mobil->plat_no= $request->plat_no;
-        $mobil->kapasitas = $request->kapasitas;
-        $mobil->harga = $request->harga;
-        $mobil->jenis = $request->jenis;
-        $mobil->warna = $request->warna;
-        $mobil->tahun = $request->tahun;
-        $mobil->type = $request->type;
-        $mobil->id_galeri = $request->id_galeri;
-        $mobil->save();
+        $mobil = mobil::find($id);
+        $mobil->update($request->all());
         return redirect()->route('bil.index');
     }
 

@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::resource('bil','MobilController');
+Route::resource('glr','GaleriController');
 
 Route::get('cek',function(){
 	return view('layouts.admin');

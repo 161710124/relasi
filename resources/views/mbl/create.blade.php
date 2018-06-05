@@ -26,7 +26,7 @@ Add
 
 <div class="form-group {{ $errors->has('plat_no')? 'has error' :'' }}">
 <label class="control-label">plat_no</label>
-<textarea name="plat_no" class="form-control" required></textarea>
+<input name="plat_no" class="form-control" required></input>
 @if ($errors->has('plat_no'))
 <span class="help-block">
 <strong>{{ $errors->first('plat_no') }}</strong>
@@ -36,7 +36,7 @@ Add
 
 <div class="form-group {{ $errors->has('kapasitas')? 'has error' :'' }}">
 <label class="control-label">kapasitas</label>
-<textarea name="kapasitas" class="form-control"  required></textarea>
+<input name="kapasitas" class="form-control"  required></input>
 @if ($errors->has('kapasitas'))
 <span class="help-block">
 <strong>{{ $errors->first('kapasitas') }}</strong>
@@ -46,7 +46,7 @@ Add
 
 <div class="form-group {{ $errors->has('harga')? 'has error' :'' }}">
 <label class="control-label">harga</label>
-<textarea name="harga" class="form-control"  required></textarea>
+<input name="harga" class="form-control"  required></input>
 @if ($errors->has('harga'))
 <span class="help-block">
 <strong>{{ $errors->first('harga') }}</strong>
@@ -56,7 +56,7 @@ Add
 
 <div class="form-group {{ $errors->has('jenis')? 'has error' :'' }}">
 <label class="control-label">jenis</label>
-<textarea name="jenis" class="form-control"  required></textarea>
+<input name="jenis" class="form-control"  required></input>
 @if ($errors->has('jenis'))
 <span class="help-block">
 <strong>{{ $errors->first('jenis') }}</strong>
@@ -66,7 +66,7 @@ Add
 
 <div class="form-group {{ $errors->has('warna')? 'has error' :'' }}">
 <label class="control-label">warna</label>
-<textarea name="warna" class="form-control"  required></textarea>
+<input name="warna" class="form-control"  required></input>
 @if ($errors->has('warna'))
 <span class="help-block">
 <strong>{{ $errors->first('warna') }}</strong>
@@ -76,7 +76,7 @@ Add
 
 <div class="form-group {{ $errors->has('tahun')? 'has error' :'' }}">
 <label class="control-label">tahun</label>
-<textarea name="tahun" class="form-control"  required></textarea>
+<input name="tahun" class="form-control"  required></input>
 @if ($errors->has('tahun'))
 <span class="help-block">
 <strong>{{ $errors->first('tahun') }}</strong>
@@ -86,7 +86,7 @@ Add
 
 <div class="form-group {{ $errors->has('type')? 'has error' :'' }}">
 <label class="control-label">type</label>
-<textarea name="type" class="form-control"  required></textarea>
+<input name="type" class="form-control"  required></input>
 @if ($errors->has('type'))
 <span class="help-block">
 <strong>{{ $errors->first('type') }}</strong>
@@ -96,7 +96,7 @@ Add
 
 <div class="form-group {{ $errors->has('id_galeri')? 'has error' :'' }}">
 <label class="control-label">id_galeri</label>
-<textarea name="id_galeri" class="form-control"  required></textarea>
+<input name="id_galeri" class="form-control"  required></input>
 @if ($errors->has('id_galeri'))
 <span class="help-block">
 <strong>{{ $errors->first('id_galeri') }}</strong>

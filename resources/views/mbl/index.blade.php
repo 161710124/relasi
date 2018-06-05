@@ -39,7 +39,8 @@
 				    	<td>{{ $data->warna }}</td>
 				    	<td>{{ $data->tahun }}</td>
 				    	<td>{{ $data->type }}</td>
-				    	<td>{{ $data->id_galeri }}</td>
+				    	<td><a href="" class="thumbnail">
+                            <img src="img/{{ $data->galeri->foto, $data->nama }}" style="max-height:150px;max-width:150px;margin-top:7px;"</td>
 						<td>
 							<a class="btn btn-primary" href="{{ route('bil.edit',$data->id) }}">Update</a>
 						</td>

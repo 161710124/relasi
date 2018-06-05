@@ -12,10 +12,10 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="mbl">Dashboard 1</a>
+                                    <a href="bil">Mobil</a>
                                 </li>
                                 <li>
-                                    <a href="index2.html">Dashboard 2</a>
+                                    <a href="glr">Galeri</a>
                                 </li>
                                 <li>
                                     <a href="index3.html">Dashboard 3</a>
